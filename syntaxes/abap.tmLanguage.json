@@ -1,0 +1,100 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "ABAP",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		},
+		{
+			"include": "#comments"
+		},
+		{
+			"include": "#numbers"
+		},
+		{
+			"name": "if-block",
+			"begin": "\\bIF\\b",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.control.if.abap"
+				}
+			},
+			"end": "\\bENDIF\\b",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.endif.abap"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#expressions"
+				}
+			]
+		},
+		{
+			"name": "loop-block",
+			"begin": "\\bLOOP\\b",
+			"beginCaptures": {
+				"0": {
+					"name": "keyword.control.loop.abap"
+				}
+			},
+			"end": "\\bENDLOOP\\b",
+			"endCaptures": {
+				"0": {
+					"name": "keyword.control.endloop.abap"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#expressions"
+				}
+			]
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [
+				{
+					"name": "keyword.control.abap",
+					"match": "\\b(DATA|SELECT|FROM|TABLE|WHERE|JOIN|INSERT|UPDATE|DELETE|LOOP|ENDLOOP|WHILE|ENDWHILE|ELSE|ELSEIF|ENDIF|IF|CASE|WHEN|ENDCASE|PERFORM|CALL|FORM|ENDFORM|MODULE|FUNCTION|ENDFUNCTION|RETURN|TRY|CATCH|ENDTRY|DO|ENDDO|MOVE|APPEND|CONTINUE|EXIT|BREAK-POINT|CHECK|CLEAR|CONSTANTS|TYPES|FIELD-SYMBOLS|TABLES|INCLUDE|DEFINE|END-OF-PAGE|AND|OR|NOT|EQ|NE|GT|LT|GE|LE|ADD|SUBTRACT|MULTIPLY|DIVIDE|CONCATENATE|SPLIT|REPLACE|READ|DESCRIBE|TRANSLATE|NEW|CREATE|ADJACENT|DUPLICATES|COMPARING|MODIFY|CLASS|ENDCLASS|DEFINITION|INHERITING|PUBLIC|PRIVATE|PROTECTED|SECTION|TYPE|METHODS|IMPORTING|CHANGING|USING|EXPORTING|LIKE|REDEFINITION|METHOD|ENDMETHOD|IMPLEMENTATION|IS|INITIAL|RAISING|INTO|RAISE|EXCEPTION|TO|SORT|BY|WITH|KEY|TRANSPORTING|NO|FIELDS|INDEX|AT|LINE|NEW-LINE|WRITE|ULINE|CONDENSE|COMPONENT|ASSIGN|ASSIGNING|ASSIGNED|REF|MESSAGE|SEPARATED|OF|STRUCTURE|APPENDING|FOR|ALL|ENTRIES|BINARY|SEARCH|DESCENDING|ASCENDING|FREE|RANGE|STOP|EXCEPTIONS|SUBMIT|VIA|JOB|NUMBER|OTHERS|HANDLE|BOUND|BEGIN|END|SORTED|UNIQUE|OBJECT|SHIFT|LEFT|IN|FIND|FIRST|OCCURRENCE|MATCH|OFFSET|REFRESH|GET|TIME|STAMP|FIELD|RECEIVING|FIELD|SYMBOL|INNER|OUTER|LINES|DELETING|LEADING|DESTINATION|CONV|VALUE|GAPS|SINGLE|ID|STANDARD|HASHED|ALPHA|AS|ON|FINAL|TESTING|DURATION|SHORT|RISK|LEVEL|HARMLESS)\\b"
+				}
+			]
+		},
+		"strings": {
+			"name": "string.quoted.double.abap",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape.abap",
+					"match": "\\\\."
+				}
+			]
+		},
+		"comments": {
+			"patterns": [
+				{
+					"name": "comment.line.star.abap",
+					"match": "^[ \\t]*\\*.*$"
+				},
+				{
+					"name": "comment.line.double-quote.abap",
+					"match": "\".*$"
+				}
+			]
+		},
+		"numbers": {
+			"patterns": [
+				{
+					"name": "constant.numeric.abap",
+					"match": "\\b\\d+(\\.\\d+)?\\b"
+				}
+			]
+		}
+	},
+	"scopeName": "source.abap"
+}

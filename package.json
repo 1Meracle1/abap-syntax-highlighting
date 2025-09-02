@@ -1,0 +1,25 @@
+{
+  "name": "abap-syntax-highlighting",
+  "displayName": "abap_syntax_highlighting",
+  "description": "ABAP Syntax Highlighting",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "abap",
+      "aliases": ["ABAP", "abap"],
+      "extensions": [".abap"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "abap",
+      "scopeName": "source.abap",
+      "path": "./syntaxes/abap.tmLanguage.json"
+    }]
+  }
+}
